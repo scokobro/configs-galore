@@ -1,0 +1,68 @@
+# Configs
+config defaultToCurrentScreen true
+config nudgePercentOf screenSize
+config resizePercentOf screenSize
+config secondsBetweenRepeat 0.1
+config checkDefaultsOnLoad true
+config focusCheckWidthMax 3000
+#config keyboardLayout dvorak
+config windowHintsShowIcons true
+config windowHintsIgnoreHiddenWindows false
+#config windowHintsDuration 7
+config windowHintsSpread true
+#config windowHintsFontColor "255;255;255;1.0"
+#config windowHintsFontName "Impact"
+config windowHintsFontSize 80
+#config windowHintsOrder persist
+ 
+# Monitor Aliases
+alias mon-laptop      0
+alias mon-acer    1
+ 
+# Misc Aliases
+#alias showHintsLeftHand hint AOEUIYQJKX
+#alias showNormalHint hint AOEUIDHTNSYXFBPKGMCW
+#alias browser 'Nightly'
+#alias editor 'MacVim'
+ 
+# Abstract positions
+alias full          move screenOriginX;screenOriginY                  screenSizeX;screenSizeY
+alias lefthalf      move screenOriginX;screenOriginY                  screenSizeX/2;screenSizeY
+alias righthalf     move screenOriginX+screenSizeX/2;screenOriginY    screenSizeX/2;screenSizeY
+alias rightmost     move screenOriginX+screenSizeX*0.4;screenOriginY  screenSizeX*0.6;screenSizeY
+alias rightless     move screenOriginX+screenSizeX*0.6;screenOriginY  screenSizeX*0.4;screenSizeY
+alias leftmost      move screenOriginX;screenOriginY                  screenSizeX*0.6;screenSizeY
+alias leftless      move screenOriginX;screenOriginY                  screenSizeX*0.4;screenSizeY
+# Concrete positions
+alias 1-full        move screenOriginX;screenOriginY screenSizeX;screenSizeY         ${mon-laptop}
+alias 1-left        move screenOriginX;screenOriginY screenSizeX/2;screenSizeY         ${mon-laptop}
+alias 1-right       move screenOriginX+screenSizeX/2;screenOriginY screenSizeX/2;screenSizeY         ${mon-laptop}
+
+alias 2-full        move screenOriginX;screenOriginY screenSizeX;screenSizeY         ${mon-acer}
+alias 2-left        move screenOriginX;screenOriginY screenSizeX/2;screenSizeY         ${mon-acer}
+alias 2-right       move screenOriginX+screenSizeX/2;screenOriginY screenSizeX/2;screenSizeY         ${mon-acer}
+
+#alias 2-righttop    move screenOriginX+screenSizeX/2;screenOriginY screenSizeX/2;screenSizeY/2       ${mon-samsung}
+#alias 2-rightbottom move screenOriginX+screenSizeX/2;screenOriginY+screenSizeY/2    screenSizeX/2;screenSizeY/2       ${mon-samsung}
+ 
+alias hyper shift;ctrl;alt;cmd #this creates and 'alias' called hyper which means 'shift;ctrl;alt;cmd'
+ 
+bind z:${hyper} hint qwertasdfgzxcvb
+bind a:${hyper} grid padding:2 1680x1050:8,4
+
+# Location bindings
+bind left:${hyper} ${lefthalf}
+bind f:${hyper} ${full}
+bind right:${hyper} ${righthalf}
+bind r:${hyper} throw next
+
+bind 1:${hyper} ${1-left}
+bind 2:${hyper} ${1-right}
+bind 3:${hyper} ${2-left}
+bind 4:${hyper} ${2-right}
+
+bind b:${hyper} focus 'Google Chrome'
+bind t:${hyper} focus 'TextWrangler'
+bind n:${hyper} focus 'nvALT'
+bind i:${hyper} focus 'iTunes'
+bind x:${hyper} focus 'Tagit'
